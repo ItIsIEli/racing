@@ -8,29 +8,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.floorLight0, function (sp
     checkPoint = 1
 })
 function initTimeView () {
-    scene.createRenderable(0, function (target: Image, camera: scene.Camera) {
-    const s = "Time " + formatTime(lapTime)+"  Best "+formatTime(bestTime)
-    const font = image.font8
-    const width = font.charWidth * s.length;
-    const left = (screen.width >> 1) - (width >> 1) + 1;
-    screen.fillRect(left, 0, width, font.charHeight, 0);
-    screen.print(s, left, 0, 3, font);
-})
-function formatTime(t:number) {
-    if (t==0) {
-        return "--.--"
-    }
-    const seconds = Math.idiv(t, 1000)
-    const remainder = Math.idiv(t % 1000, 10)
-    return formatDecimal(seconds) + "." + formatDecimal(remainder)
-}
-function formatDecimal(val: number) {
-    val |= 0;
-    if (val < 10) {
-        return "0" + val;
-    }
-    return val.toString();
-}
+	
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     music.playTone(392, music.beat(BeatFraction.Eighth))
